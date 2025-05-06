@@ -38,10 +38,10 @@ def puntos(resultado):
         return 1  # Empate
     return None
 
-df['Puntos_Local'] = df['Resultado'].apply(puntos)
-df['Puntos_Visitante'] = df['Puntos_Local'].apply(lambda x: 1 if x == 1 else 3 - x if x in [0, 3] else None)
+df['Puntos Local'] = df['Resultado'].apply(puntos)
+df['Puntos Visitante'] = df['Puntos Local'].apply(lambda x: 1 if x == 1 else 3 - x if x in [0, 3] else None)
 
 # Exportar archivo limpio
 df.to_csv(archivo_salida, index=False, encoding='utf-8-sig')
 
-print(f"\nArchivo limpio y listo para Power BI: {archivo_salida}")
+print(f"\nArchivo limpio y listo para realizar la unión: {archivo_salida}")

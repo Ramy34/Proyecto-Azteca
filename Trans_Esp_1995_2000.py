@@ -57,8 +57,8 @@ def puntos(resultado):
         return 1  # Empate
     return None
 
-df_combinado['Puntos_Local'] = df_combinado['Resultado'].apply(puntos)
-df_combinado['Puntos_Visitante'] = df_combinado['Puntos_Local'].apply(lambda x: 1 if x == 1 else 3 - x if x in [0, 3] else None)
+df_combinado['Puntos Local'] = df_combinado['Resultado'].apply(puntos)
+df_combinado['Puntos Visitante'] = df_combinado['Puntos Local'].apply(lambda x: 1 if x == 1 else 3 - x if x in [0, 3] else None)
 
 # Abrimos el archivo historico
 df_historico = pd.read_csv(archivo_salida)
@@ -69,6 +69,4 @@ df_final = pd.concat([df_historico, df_combinado], ignore_index=True)
 # Exportar archivo limpio
 df_final.to_csv(archivo_salida, index=False, encoding='utf-8-sig')
 
-print(df_final)
-
-print(f"\nArchivo limpio y listo para Power BI: {archivo_salida}")
+print(f"\nArchivo limpio y listo para realizar la unión: {archivo_salida}")
