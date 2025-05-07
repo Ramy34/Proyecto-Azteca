@@ -5,8 +5,6 @@
 
 ### 🏷️ Badges
 
-Puedes poner estos justo debajo del título del proyecto:
-
 ```markdown
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
 ![Power BI](https://img.shields.io/badge/PowerBI-Report-yellow?logo=powerbi)
