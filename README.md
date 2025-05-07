@@ -51,26 +51,6 @@
 - Python 3.x
 - Pandas
 - Power BI Desktop (para visualizar el archivo `.pbix`)
-
----
-
-## 📁 Estructura del Proyecto
-Proyecto Azteca/
-├── Bronze/
-│ └── [Países con archivos originales]
-├── Silver/
-│ └── [Archivos transformados por liga]
-├── Gold/
-│ └── Partidos.csv
-├── Limpieza/
-│ ├── Mexico/
-│ └── España/
-├── Archivos/
-│ ├── extraccion.py
-│ ├── transformacion.py
-│ └── union.py
-├── Azteca.pbix
-└── README.md
 ---
 
 ## 📬 Contacto
