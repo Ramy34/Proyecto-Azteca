@@ -6,10 +6,10 @@
 ### 🏷️ Badges
 
 ```markdown
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
-![Power BI](https://img.shields.io/badge/PowerBI-Report-yellow?logo=powerbi)
-![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-orange)
-![Licencia](https://img.shields.io/badge/Licencia-MIT-green)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)]
+[![Power BI](https://img.shields.io/badge/PowerBI-Report-yellow?logo=powerbi)]
+[![Estado](https://img.shields.io/badge/Estado-En%20Desarrollo-orange)]
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-green)]
 
 
 📊 El **Proyecto Azteca** tiene como objetivo aprender y aplicar conceptos fundamentales de **Ingeniería de Datos** utilizando estadísticas de fútbol profesional.
