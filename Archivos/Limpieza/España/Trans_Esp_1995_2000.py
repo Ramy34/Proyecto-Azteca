@@ -65,7 +65,8 @@ def Trans_Esp_1995_2000():
     # Convertir fechas correctamente
     df_combinado['Fecha'] = pd.to_datetime(df_combinado['Fecha'], dayfirst=True, errors='coerce')
     df_combinado = df_combinado.dropna(subset=['Fecha'])
-
+    df_combinado['Fecha'] = df_combinado['Fecha'].dt.strftime('%Y-%m-%d')
+    
     df_combinado.insert(loc=0, column='País', value='España')
     df_combinado.insert(loc=1, column='Liga', value='LaLiga')
 
