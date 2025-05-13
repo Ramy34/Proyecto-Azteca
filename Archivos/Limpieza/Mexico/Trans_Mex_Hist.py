@@ -42,7 +42,7 @@ def Trans_Mex_Hist():
     # Convertir fechas correctamente
     df['Fecha'] = pd.to_datetime(df['Fecha'], dayfirst=True, errors='coerce')
     df = df.dropna(subset=['Fecha'])
-    df_combinado['Fecha'] = df_combinado['Fecha'].dt.strftime('%Y-%m-%d')
+    df['Fecha'] = df['Fecha'].dt.strftime('%Y-%m-%d')
 
     # Se agregan nuevas columnas
     df['Goles Medio Tiempo Local'] = df['Goles Local']

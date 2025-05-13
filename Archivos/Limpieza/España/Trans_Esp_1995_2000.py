@@ -62,9 +62,10 @@ def Trans_Esp_1995_2000():
     # Renombrar columnas para más claridad
     df_combinado.columns = ['Temporada','Fecha', 'Equipo Local', 'Equipo Visitante', 'Goles Local', 'Goles Visitante', 'Resultado', 'Goles Medio Tiempo Local','Goles Medio Tiempo Visitante', 'Resultado Medio Tiempo']
 
-    # Convertir fechas correctamente
-    df_combinado['Fecha'] = pd.to_datetime(df_combinado['Fecha'], dayfirst=True, errors='coerce')
+    df_combinado['Fecha'] = pd.to_datetime(df_combinado['Fecha'], errors='coerce', dayfirst=True)
     df_combinado = df_combinado.dropna(subset=['Fecha'])
+    df_combinado['Fecha'] = df_combinado['Fecha'].dt.date  # quita la hora
+
 
     df_combinado.insert(loc=0, column='País', value='España')
     df_combinado.insert(loc=1, column='Liga', value='LaLiga')

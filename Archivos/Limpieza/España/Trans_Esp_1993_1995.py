@@ -62,10 +62,9 @@ def Trans_Esp_1993_1995():
     # Renombrar columnas para más claridad
     df_combinado.columns = ['Temporada','Fecha', 'Equipo Local', 'Equipo Visitante', 'Goles Local', 'Goles Visitante', 'Resultado']
 
-    # Convertir fechas correctamente
-    df_combinado['Fecha'] = pd.to_datetime(df_combinado['Fecha'], dayfirst=True, errors='coerce')
+    df_combinado['Fecha'] = pd.to_datetime(df_combinado['Fecha'], errors='coerce', dayfirst=True)
     df_combinado = df_combinado.dropna(subset=['Fecha'])
-    df_combinado['Fecha'] = df_combinado['Fecha'].dt.strftime('%Y-%m-%d')
+    df_combinado['Fecha'] = df_combinado['Fecha'].dt.date  # quita la hora
 
     # Se agregan nuevas columnas
     df_combinado['Goles Medio Tiempo Local'] = df_combinado['Goles Local']
