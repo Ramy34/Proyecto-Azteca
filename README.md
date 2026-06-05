@@ -11,29 +11,45 @@
 [![Licencia](https://img.shields.io/badge/Licencia-MIT-green)]
 
 
-📊 El **Proyecto Azteca** tiene como objetivo aprender y aplicar conceptos fundamentales de **Ingeniería de Datos** utilizando estadísticas de fútbol profesional.
+📊 El **Proyecto Azteca** tiene como objetivo aprender y aplicar conceptos fundamentales de **Ingeniería de Datos** (Procesos ETL y Arquitectura Medallón) utilizando estadísticas de fútbol profesional.
 
 ---
 
-## 🔧 Características Actuales
+## 🏗️ Arquitectura y Flujo de Datos
 
-### 1. 🗂️ Extracción
-- Se utiliza la base de datos oficial de [Football-Data.co.uk](https://www.football-data.co.uk/)
-- Actualmente se realiza **de forma manual** (pendiente de automatización)
-- Los archivos extraídos se almacenan en la carpeta `_Bronze_`, organizados por país
+El proyecto sigue un diseño de capas de datos estructurado y es orquestado de forma automática desde el script principal `main.py`:
 
-### 2. 🧹 Transformación
-- Se emplea **Python** para limpiar y transformar los datos
-- Los archivos limpios se guardan en la carpeta `_Silver_`
+### 1. 🥉 Capa Bronze (Extracción) | `Archivos/extraccion.py`
+- **Origen:** Archivos originales de la base de datos de Football-Data.co.uk.
+- **Proceso:** Actualmente la descarga es manual (pendiente de automatizar en el script).
+- **Almacenamiento:** Los archivos se guardan crudos en la carpeta `Bronze/`, organizados por país y división.
+
+### 2. 🥈 Capa Silver (Transformación) | `Archivos/transformacion.py`
+- **Proceso:** Un script dinámico que busca y ejecuta recursivamente todos los procesos de limpieza ubicados en la carpeta `Archivos/Limpieza/`.
+- **Lógica aplicada:** Limpieza de datos, homologación de nombres de columnas, formateo de fechas y creación de nuevas métricas (como Puntos de Local y Visitante).
+- **Scripts actuales:**
   - 🇲🇽 **México**: `Limpieza/Mexico/Trans_Mex_Hist.py`
   - 🇪🇸 **España 1993-1995**: `Limpieza/España/Trans_Esp_1993_1995.py`
-  - 🇪🇸 **España 1995-2001**: `Limpieza/España/Trans_Esp_1995_2001.py`
+  - 🇪🇸 **España 1995-2000**: `Limpieza/España/Trans_Esp_1995_2000.py`
+- **Almacenamiento:** Archivos históricos estandarizados en la carpeta `Silver/`.
 
-### 3. 📦 Carga
-- Se consolidan todos los archivos `.csv` de la carpeta `_Silver_` en un solo archivo llamado `Partidos.csv` ubicado en la carpeta `_Gold_`
+### 3. 🥇 Capa Gold (Carga y Unión) | `Archivos/union.py`
+- **Proceso:** Lee de manera automatizada todos los archivos `.csv` generados en la capa Silver.
+- **Almacenamiento:** Los concatena verticalmente y exporta un único archivo maestro llamado `partidos.csv` directamente en la carpeta `Gold/`.
 
 ### 4. 📈 Visualización (Power BI)
-- Con **Power BI** se conecta el archivo `Partidos.csv` para generar visualizaciones en el reporte: `_Azteca.pbix_`
+- Con **Power BI** se conecta el archivo final de la capa Gold (`Gold/partidos.csv`) para nutrir el reporte analítico interactivo: `_Azteca.pbix_`.
+
+---
+
+## 🚀 Cómo Ejecutar el Proyecto
+
+Para correr el proceso (ETL) completo desde la terminal, simplemente debes ejecutar el archivo orquestador:
+
+```bash
+python main.py
+```
+*Este comando lanzará secuencialmente la Extracción (1), la Transformación dinámica de todas las ligas (2) y la Unión final de la información (3).*
 
 ---
 
@@ -49,7 +65,7 @@
 ## 🛠️ Requisitos
 
 - Python 3.x
-- Pandas
+- Librerías: `pandas`
 - Power BI Desktop (para visualizar el archivo `.pbix`)
 ---
 
